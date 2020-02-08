@@ -6,10 +6,9 @@ import {
 import ScrollableScreen from './ScrollableScreen';
 
 const OrderListScreen = ({ route, navigation }) => {
-    const { title } = route.params;
     return (
         <ScrollableScreen>
-            <Text>{title}</Text>
+            <Text>holaa</Text>
         </ScrollableScreen>
     );
 };

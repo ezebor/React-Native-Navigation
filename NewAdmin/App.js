@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,34 +11,22 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './src/components/HomeScreen';
 
-import styled from 'styled-components';
+const Stack = createStackNavigator();
 
-const StyledApp = styled.SafeAreaView`
-  flex: 1;
-`;
-
-const StyledScrollView = styled.ScrollView`
-  flex: 1;
-  marginHorizontal: 24;
-  backgroundColor: red;
-  marginTop: 12;
-`;
+const DetailsScreen = () => (
+  <StyledScrollView>
+    <Text>chau</Text>
+  </StyledScrollView>
+);
 
 const App: () => React$Node = () => (
   <NavigationContainer>
-    <StyledApp>
-      <StyledScrollView>
-        
-      </StyledScrollView>
-    </StyledApp>
+    <Stack.Navigator>
+      <Stack.Screen  name="Home" component={HomeScreen}/>
+      <Stack.Screen name="Details" component={DetailsScreen} />
+    </Stack.Navigator>
   </NavigationContainer>
 );
 

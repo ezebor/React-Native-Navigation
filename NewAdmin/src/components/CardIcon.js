@@ -6,12 +6,9 @@ import waitingPayment from '../assets/ic_order_waiting_manual_confirmation.png';
 
 const StyledView = styled.View`
   justifyContent: flex-start;
-  alignContent: center;
+  alignItems: center;
+  flex: 1;
   paddingTop: 10;
-  paddingLeft: 20;
-  flexBasis: 20%;
-  flexShrink: 0;
-  flexGrow: 0;
 `;
 
 const StyledCardIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
@@ -20,7 +17,8 @@ const StyledCardIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
 }))`
   background: ${props => props.background};
   borderRadius: ${props => props.radius};
-  flex: 1;
+  width: 40;
+  height: 40;
   flexGrow: 0;
   flexShrink: 0;
 `;

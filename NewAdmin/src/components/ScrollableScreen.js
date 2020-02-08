@@ -9,7 +9,6 @@ import styled from 'styled-components';
 const StyledScrollView = styled.ScrollView`
   flex: 1;
   marginHorizontal: 24;
-  backgroundColor: red;
   marginTop: 12;
 `;
 

@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 const StyledCard = styled.View`
     flexDirection: row;
+    flex: 1;
     borderStyle: solid;
     borderWidth: 1;
     borderRadius: 8;

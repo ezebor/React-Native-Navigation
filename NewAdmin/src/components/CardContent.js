@@ -11,12 +11,9 @@ const StyledView = styled.View.attrs(({ alignType }) => ({
 }))`
   justifyContent: center;
   alignContent: ${props => props.alignContent};
-  flexBasis: 80%;
-  flexGrow: 1;
-  flexShrink: 1;
+  flex: 4;
   paddingTop: 10;
-  paddingBottom: 20;
-  paddingHorizontal: 10;
+  paddingBottom: 25;
 `;
 
 const CardContent = ({ alignType, children }) => (

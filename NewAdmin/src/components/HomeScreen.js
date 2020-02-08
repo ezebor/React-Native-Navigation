@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import {
-    Text,
+    Text, Button,
 } from 'react-native';
 
-import Screen from './Screen';
+import ScrollableScreen from './ScrollableScreen';
 
-const HomeScreen = props => (
-    <Screen>
+const HomeScreen = ({ navigation }) => (
+    <ScrollableScreen>
         <Text>holaa</Text>
-    </Screen>
+        <Button 
+            title= "ir a orders"
+            onPress={() => navigation.navigate("Ventas", {
+                title: "Mis ventas",
+            })}
+        />
+    </ScrollableScreen>
 );
 
 export default HomeScreen;

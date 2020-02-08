@@ -13,10 +13,10 @@ const StyledScrollView = styled.ScrollView`
   marginTop: 12;
 `;
 
-const Screen = ({ children }) => (
+const ScrollableScreen = ({ children }) => (
     <StyledScrollView>
         { children }
     </StyledScrollView>
 );
 
-export default Screen;
+export default ScrollableScreen;

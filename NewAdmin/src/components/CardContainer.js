@@ -2,53 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Card from './Card';
+import {
+  FlatList,
+} from 'react-native';
 
-const StyledCardContainer = styled.View.attrs(({ direction }) => ({
-    flexDirection: direction,
-}))`
-  flexDirection: ${props => props.flexDirection};
-  flexBasis: auto;
-  justifyContent: center;
-`;
-
-const StyledDivider = styled.View.attrs(({ direction }) => ({
-  width: direction === 'column' ? 0 : 10,
+const StyledDivider = styled.View.attrs(({ horizontal }) => ({
+  width: horizontal === true ? 10 : 0,
 }))`
   width: ${props => props.width};
   height: ${props => 10 - props.width};
 `;
 
-const CardContainer = ({ children, direction }) => {
-  const rows = [];
-  children.forEach(item => {
-    rows.push(item);
-    rows.push(
-        <StyledDivider 
-            direction={direction} 
-        />
-    );
-  });
-
-  if (rows.length >= 2) {
-    rows.pop(rows[rows.length - 1]);
-  }
-
+const CardContainer = ({ children, horizontal }) => {
+  console.log(horizontal);
   return (
-    <StyledCardContainer direction={direction}>
-        {rows}
-    </StyledCardContainer>
+    <FlatList 
+      horizontal={horizontal}
+      ItemSeparatorComponent={() => <StyledDivider horizontal={horizontal} />}
+      data={ children }
+      renderItem={({item}) => {
+        return item;
+      }}
+      keyExtractor={(item) => item.key}
+    />
   );
 };
 
 CardContainer.propTypes = {
-  children: PropTypes.element,
-  direction: PropTypes.string,
+  children: PropTypes.array,
+  horizontal: PropTypes.bool,
 };
 
 CardContainer.defaultProps = {
-  children: [<Card />, <Card />],
-  direction: 'column',
+  children: [],
+  horizontal: false,
 };
 
 export default CardContainer;

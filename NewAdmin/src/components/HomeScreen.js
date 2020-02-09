@@ -23,21 +23,21 @@ const StyledHeader = styled.Text.attrs(({ textAlign, paddingTop }) => ({
     fontSize: 24;
   `;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ route, navigation }) => {
+    console.log(route.name);
     navigation.setOptions({
-        headerRight: () => (
+        headerLeft: () => (
             <Button 
                 onPress={() => navigation.navigate("Ventas")}
-                title="Mis ventas"
+                title="HOLIS ventas"
             />
         ),
     })
     return (
         <ScrollableScreen>
             <StyledHeader>Prestá atención a estas órdenes</StyledHeader>
-            
             <CardContainer>
-                <Card>
+                <Card key={1}>
                     <CardIcon 
                         image={waitingPayment} 
                         backgroundColor="#FFB437"
@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
                     </CardContent>
                 </Card>
 
-                <Card>
+                <Card key={2}>
                     <CardIcon 
                         image={waitingShipment} 
                         backgroundColor="#2C3457"
@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                     </CardContent>
                 </Card>
 
-                <Card>
+                <Card key={3}>
                     <CardIcon 
                         image={waitingPacking} 
                         backgroundColor="#039DDD"

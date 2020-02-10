@@ -5,7 +5,7 @@ import {
 import styled from 'styled-components';
 
 import ScrollableScreen from './ScrollableScreen';
-import HomeOrderCard from './HomeOrderCard';
+import PanelOrderCardRow from './PanelOrderCardRow';
 import CardContainer from './CardContainer';
 import waitingPayment from '../assets/ic_order_waiting_manual_confirmation.png';
 import waitingShipment from '../assets/ic_order_waiting_shipment_all.png';
@@ -32,7 +32,7 @@ const HomeScreen = ({ route, navigation }) => {
     })
 
     const orderCardListData = [
-        <HomeOrderCard
+        <PanelOrderCardRow
             key={1}
             icon={waitingPayment}
             iconBackgroundColor="#FFB437"
@@ -40,7 +40,7 @@ const HomeScreen = ({ route, navigation }) => {
             body="Esperando confirmación de pago"
             shape="circle"
         />,
-        <HomeOrderCard
+        <PanelOrderCardRow
             key={2}
             icon={waitingShipment}
             iconBackgroundColor="#2C3457"
@@ -48,7 +48,7 @@ const HomeScreen = ({ route, navigation }) => {
             body="Esperando confirmación de envio"
             shape="circle"
         />,
-        <HomeOrderCard
+        <PanelOrderCardRow
             key={3}
             icon={waitingPacking}
             iconBackgroundColor="#039DDD"

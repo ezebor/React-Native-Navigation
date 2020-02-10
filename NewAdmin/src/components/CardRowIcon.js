@@ -10,7 +10,7 @@ const StyledView = styled.View`
   paddingTop: 10;
 `;
 
-const StyledCardIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
+const StyledCardRowIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
   background: backgroundColor,
   radius: shape === 'circle' ? '50' : '8',
 }))`
@@ -22,9 +22,9 @@ const StyledCardIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
   flexShrink: 0;
 `;
 
-const CardIcon = ({ backgroundColor, shape, source }) => (
+const CardRowIcon = ({ backgroundColor, shape, source }) => (
   <StyledView>
-    <StyledCardIcon 
+    <StyledCardRowIcon 
       backgroundColor={backgroundColor} 
       shape={shape} 
       source={source}
@@ -32,15 +32,15 @@ const CardIcon = ({ backgroundColor, shape, source }) => (
   </StyledView>
 );
 
-export default CardIcon;
-
-CardIcon.propTypes = {
+CardRowIcon.propTypes = {
   shape: PropTypes.string,
   backgroundColor: PropTypes.string,
   source: PropTypes.element.isRequired,
 };
 
-CardIcon.defaultProps = {
+CardRowIcon.defaultProps = {
   shape: 'square',
   backgroundColor: palette.white,
 };
+
+export default CardRowIcon;

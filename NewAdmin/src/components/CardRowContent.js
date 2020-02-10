@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {
-  View,
-} from 'react-native';
-
 const StyledView = styled.View.attrs(({ alignType }) => ({
   alignContent: alignType ?? "flex-start",
 }))`
@@ -16,20 +12,20 @@ const StyledView = styled.View.attrs(({ alignType }) => ({
   paddingBottom: 25;
 `;
 
-const CardContent = ({ alignType, children }) => (
+const CardRowContent = ({ alignType, children }) => (
   <StyledView alignType={alignType}>
     { children }
   </StyledView>
 );
 
-CardContent.propTypes = {
+CardRowContent.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
   alignType: PropTypes.string,
 };
 
-CardContent.defaultProps = {
+CardRowContent.defaultProps = {
   children: [],
   alignType: 'flex-start',
 };
 
-export default CardContent;
+export default CardRowContent;

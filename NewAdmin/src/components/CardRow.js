@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-    View,
-} from 'react-native';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -18,18 +15,18 @@ const StyledCard = styled.View`
     flexBasis: auto;
 `;
 
-const Card = ({ children }) => (
+const CardRow = ({ children }) => (
     <StyledCard>
         { children }
     </StyledCard>
 );
 
-Card.propTypes = {
+CardRow.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
 };
 
-Card.defaultProps = {
+CardRow.defaultProps = {
   children: [],
 };
 
-export default Card;
+export default CardRow;

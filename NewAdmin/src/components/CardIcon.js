@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { palette } from '../shared/styles';
-import waitingPayment from '../assets/ic_order_waiting_manual_confirmation.png';
 
 const StyledView = styled.View`
   justifyContent: flex-start;
@@ -23,12 +22,12 @@ const StyledCardIcon = styled.Image.attrs(({ backgroundColor, shape }) => ({
   flexShrink: 0;
 `;
 
-const CardIcon = ({ backgroundColor, shape, image }) => (
+const CardIcon = ({ backgroundColor, shape, source }) => (
   <StyledView>
     <StyledCardIcon 
       backgroundColor={backgroundColor} 
       shape={shape} 
-      source={image}
+      source={source}
     />
   </StyledView>
 );
@@ -38,11 +37,10 @@ export default CardIcon;
 CardIcon.propTypes = {
   shape: PropTypes.string,
   backgroundColor: PropTypes.string,
-  source: PropTypes.element,
+  source: PropTypes.element.isRequired,
 };
 
 CardIcon.defaultProps = {
   shape: 'square',
   backgroundColor: palette.white,
-  source: waitingPayment,
 };

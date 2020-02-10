@@ -5,9 +5,7 @@ import {
 import styled from 'styled-components';
 
 import ScrollableScreen from './ScrollableScreen';
-import Card from './Card';
-import CardIcon from './CardIcon';
-import CardContent from './CardContent';
+import HomeOrderCard from './HomeOrderCard';
 import CardContainer from './CardContainer';
 import waitingPayment from '../assets/ic_order_waiting_manual_confirmation.png';
 import waitingShipment from '../assets/ic_order_waiting_shipment_all.png';
@@ -24,61 +22,49 @@ const StyledHeader = styled.Text.attrs(({ textAlign, paddingTop }) => ({
   `;
 
 const HomeScreen = ({ route, navigation }) => {
-    console.log(route.name);
     navigation.setOptions({
         headerLeft: () => (
             <Button 
-                onPress={() => navigation.navigate("Ventas")}
-                title="HOLIS ventas"
+                onPress={() => navigation.openDrawer()}
+                title="Sidebar"
             />
         ),
     })
+
+    const orderCardListData = [
+        <HomeOrderCard
+            key={1}
+            icon={waitingPayment}
+            iconBackgroundColor="#FFB437"
+            title="40 órdenes"
+            body="Esperando confirmación de pago"
+            shape="circle"
+        />,
+        <HomeOrderCard
+            key={2}
+            icon={waitingShipment}
+            iconBackgroundColor="#2C3457"
+            title="40 órdenes"
+            body="Esperando confirmación de envio"
+            shape="circle"
+        />,
+        <HomeOrderCard
+            key={3}
+            icon={waitingPacking}
+            iconBackgroundColor="#039DDD"
+            title="3 órdenes"
+            body="Esperando ser empaquetadas"
+            shape="circle"
+        />,
+    ]
+
     return (
         <ScrollableScreen>
             <StyledHeader>Prestá atención a estas órdenes</StyledHeader>
-            <CardContainer>
-                <Card key={1}>
-                    <CardIcon 
-                        image={waitingPayment} 
-                        backgroundColor="#FFB437"
-                        shape="circle" 
-                    />
-                    <CardContent>
-                        <Text>40 órdenes</Text>
-                        <Text>Esperando confirmación de pago</Text>
-                    </CardContent>
-                </Card>
-
-                <Card key={2}>
-                    <CardIcon 
-                        image={waitingShipment} 
-                        backgroundColor="#2C3457"
-                        shape="circle" 
-                    />
-                    <CardContent>
-                        <Text>1 orden</Text>
-                        <Text>Esperando confirmación de envio.</Text>
-                    </CardContent>
-                </Card>
-
-                <Card key={3}>
-                    <CardIcon 
-                        image={waitingPacking} 
-                        backgroundColor="#039DDD"
-                        shape="circle" 
-                    />
-                    <CardContent>
-                        <Text>3 órdenes</Text>
-                        <Text>Esperando ser empaquetadas.</Text>
-                    </CardContent>
-                </Card>
-            </CardContainer>
-
+            <CardContainer data={orderCardListData} />
             <StyledHeader paddingTop="40" textAlign="center">
                 Estadísticas principales de tu tienda
             </StyledHeader>
-
-  
         </ScrollableScreen>
     )
 };

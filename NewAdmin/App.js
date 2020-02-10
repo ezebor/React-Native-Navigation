@@ -7,6 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import HomeScreen from './src/components/HomeScreen';
 import OrderListScreen from './src/components/OrderListScreen';
+import ProductListScreen from './src/components/ProductListScreen';
 import { 
   Button,
   Text,
@@ -21,19 +22,27 @@ const routes = {
     name: "Ventas",
     component: OrderListScreen
   },
+  products: {
+    name: "Productos",
+    component: OrderListScreen
+  },
 };
 
 const TabsNavigator = createBottomTabNavigator();
-function Tabs(key){
+const Tabs = () => {
   return (
     <TabsNavigator.Navigator>
       <TabsNavigator.Screen 
-        name="Home"
-        component={routes["home"]["component"]}
+        name={routes.home.name}
+        component={HomeStack}
       />
       <TabsNavigator.Screen 
         name="Ventas"
         component={routes["orders"]["component"]}
+      />
+      <TabsNavigator.Screen 
+        name="Productos"
+        component={ProductListScreen}
       />
     </TabsNavigator.Navigator>
   );
@@ -41,36 +50,25 @@ function Tabs(key){
 
 
 const StackNavigator = createStackNavigator();
-function Stack(key){
+const HomeStack = () => {
   return (
     <StackNavigator.Navigator>
-      <StackNavigator.Screen name="Home" options={{title: "HALAAA"}}>
-        {() => Tabs(key)}
-      </StackNavigator.Screen>
-      <StackNavigator.Screen name="Ventas">
-        {() => Tabs(key)}
-      </StackNavigator.Screen>
+      <StackNavigator.Screen 
+        name={routes.home.name} 
+        options={{title: "Panel"}}
+        component={routes.home.component}
+      />
   </StackNavigator.Navigator>
   );
 }
 
 const DrawerNavigator = createDrawerNavigator();
-function Drawer(){
-  return (
-    <DrawerNavigator.Navigator>
-      <DrawerNavigator.Screen name="Home">
-        {() => Stack("home")}
-      </DrawerNavigator.Screen>
-      <DrawerNavigator.Screen name="Ventas">
-        {() => Stack("orders")}
-      </DrawerNavigator.Screen>
-    </DrawerNavigator.Navigator>
-  );
-}
 
 const App: () => React$Node = () => (
   <NavigationContainer>
-    {Drawer()}
+    <DrawerNavigator.Navigator>
+      <DrawerNavigator.Screen name="Home" component={Tabs} />
+    </DrawerNavigator.Navigator>
   </NavigationContainer>
 );
 

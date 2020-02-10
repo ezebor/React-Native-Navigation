@@ -7,11 +7,11 @@ import {
 
 import ScrollableScreen from './ScrollableScreen';
 
-const OrderListScreen = ({ route, navigation }) => {
+const ProductListScreen = ({ route, navigation }) => {
     return (
         <ScrollableScreen>
             <SafeAreaView>
-                <Text>Orders</Text>
+                <Text>Products</Text>
                 <Button 
                     onPress={() => navigation.navigate("Home")}
                     title="Home"
@@ -21,4 +21,4 @@ const OrderListScreen = ({ route, navigation }) => {
     );
 };
 
-export default OrderListScreen;
+export default ProductListScreen;

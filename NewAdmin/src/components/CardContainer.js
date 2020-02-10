@@ -13,13 +13,12 @@ const StyledDivider = styled.View.attrs(({ horizontal }) => ({
   height: ${props => 10 - props.width};
 `;
 
-const CardContainer = ({ children, horizontal }) => {
-  console.log(horizontal);
+const CardContainer = ({ data, horizontal }) => {
   return (
     <FlatList 
       horizontal={horizontal}
       ItemSeparatorComponent={() => <StyledDivider horizontal={horizontal} />}
-      data={ children }
+      data={ data }
       renderItem={({item}) => {
         return item;
       }}
@@ -29,12 +28,12 @@ const CardContainer = ({ children, horizontal }) => {
 };
 
 CardContainer.propTypes = {
-  children: PropTypes.array,
+  data: PropTypes.array,
   horizontal: PropTypes.bool,
 };
 
 CardContainer.defaultProps = {
-  children: [],
+  data: [],
   horizontal: false,
 };
 
